@@ -1,0 +1,26 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.digitblock{
+    display: inline-grid; 
+    /* grid-gap:1em; */
+    grid-template-rows: repeat(4, 2fr);
+    grid-template-columns: repeat(3, 2fr);
+    height: 300px;
+    width: 300px;
+}
+.screen{
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+    background-color: whitesmoke;
+}
+.screenCurrent{
+    font-size: larger;
+}
+.screenLast{
+    font-size: small;
+}
