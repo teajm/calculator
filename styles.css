@@ -13,10 +13,16 @@ body{
     width: 300px;
 }
 .screen{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
     text-align: right;
     word-wrap: break-word;
     word-break: break-all;
     background-color: whitesmoke;
+    height: 65px;
+    border-radius: 6px;
+    border: 1px solid black;
 }
 .screenCurrent{
     font-size: larger;

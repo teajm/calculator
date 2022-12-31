@@ -1,3 +1,19 @@
+const numberButtons = document.querySelectorAll('[number]');
+const currentScreen = document.getElementById('screenCurrent');
+
+numberButtons.forEach((button) =>
+  button.addEventListener('click', () => appendNumber(button.textContent))
+);
+function appendNumber(num){
+    console.log(num);
+    currentScreen.textContent += num;
+}
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => resetDisplay());
+
+function resetDisplay(){
+    currentScreen.textContent = ' ';
+}
 function add(num1, num2){
     return num1 + num2;
 }
@@ -25,3 +41,4 @@ function operate(operator, num1, num2){
             return divide(num1,num2);
     }
 }
+
