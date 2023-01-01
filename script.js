@@ -1,37 +1,44 @@
-let storedOps = '';
-let storedNums = 0;
+let storedOps = null;
+let storedNums1 = null;
+let storedNums2 = null;
 let resetFlag = false;
 const numberButtons = document.querySelectorAll('[number]');
 const currentScreen = document.getElementById('screenCurrent');
 const operatorButtons = document.querySelectorAll('[operator]');
 const equalsButton = document.querySelectorAll('[equals]');
 const clearButton = document.querySelector('.clear');
+
 numberButtons.forEach((button) =>
   button.addEventListener('click', () => appendNumber(button.textContent))
 );
 operatorButtons.forEach((button) =>
-  button.addEventListener('click', () => storeOpsAndNums(button.textContent,currentScreen.textContent))
+  button.addEventListener('click', () => storeOpsAndNums(button.textContent, currentScreen.textContent))
 );
 equalsButton.forEach((button) =>
-  button.addEventListener('click', () => outputMath(storedOps, storedNums, currentScreen.textContent))
+  button.addEventListener('click', () => outputMath(storedOps, storedNums1, storedNums2))
 );
 clearButton.addEventListener('click', () => resetDisplay());
 
 function storeOpsAndNums(op, num){
+    if(storedNums1 != null && storedNums2 == null){
+        storedNums2 = num;
+    }
+    else{
+        storedNums1 = num;
+    }
     storedOps = op;
-    storedNums = num;
     resetFlag = true;
 }
+
 function appendNumber(num){
     if(resetFlag === true){
         resetDisplay();
         resetFlag = false;
     }
-    console.log(num);
     currentScreen.textContent += num;
 }
 function outputMath(ops, num1, num2){
-    storedNums = num2;
+
     currentScreen.textContent = operate(ops, num1, num2);
     resetFlag = true;
 }
