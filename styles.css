@@ -30,3 +30,7 @@ body{
 .screenLast{
     font-size: small;
 }
+.calculator{
+    background-color: green;
+    padding:20px;
+}
