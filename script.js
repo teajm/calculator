@@ -2,6 +2,8 @@ let storedOps = null;
 let storedNums1 = null;
 let storedNums2 = null;
 let resetFlag = false;
+let equalsFlag = false;
+let opsFlag = true;
 const numberButtons = document.querySelectorAll('[number]');
 const currentScreen = document.getElementById('screenCurrent');
 const operatorButtons = document.querySelectorAll('[operator]');
@@ -15,8 +17,9 @@ operatorButtons.forEach((button) =>
   button.addEventListener('click', () => storeOpsAndNums(button.textContent, currentScreen.textContent))
 );
 equalsButton.forEach((button) =>
-  button.addEventListener('click', () => outputMath(storedOps, storedNums1, storedNums2))
+  button.addEventListener('click', () => evaluate(storedOps, storedNums1, currentScreen.textContent))
 );
+
 clearButton.addEventListener('click', () => resetDisplay());
 
 function storeOpsAndNums(op, num){
@@ -28,19 +31,34 @@ function storeOpsAndNums(op, num){
     }
     storedOps = op;
     resetFlag = true;
+    equalsFlag = false;
 }
 
 function appendNumber(num){
+
     if(resetFlag === true){
         resetDisplay();
         resetFlag = false;
     }
     currentScreen.textContent += num;
 }
-function outputMath(ops, num1, num2){
-
-    currentScreen.textContent = operate(ops, num1, num2);
+function evaluate(ops, num1, num2){
+    // if(storedNums2 == null){
+    //     storedNums2 = currentScreen.textContent;
+    // }
+    // else{
+    //     storedNums1 = storedNums2;
+    //     // storedNums2 = currentScreen.textContent;
+    // }
+    if(equalsFlag == true){
+        storedNums1 = currentScreen.textContent;
+    }
+    else{
+        storedNums2 = currentScreen.textContent;
+    }
+    currentScreen.textContent = operate(storedOps, storedNums1, storedNums2);
     resetFlag = true;
+    equalsFlag = true;
 }
 
 function resetDisplay(){
