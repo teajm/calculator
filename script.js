@@ -76,6 +76,7 @@ function evaluate(){
 function resetDisplay(){
     currentScreen.textContent = ' ';
 }
+
 function clearDisplay(){
     currentScreen.textContent = ' ';
     screenLast.textContent = '';
