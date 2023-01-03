@@ -6,6 +6,7 @@ let equalsFlag = false;
 let opsFlag = false;
 const numberButtons = document.querySelectorAll('[number]');
 const currentScreen = document.getElementById('screenCurrent');
+const lastScreen = document.getElementById('screenLast');
 const operatorButtons = document.querySelectorAll('[operator]');
 const equalsButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear');
@@ -18,10 +19,10 @@ numberButtons.forEach((button) =>
 operatorButtons.forEach((button) =>
   button.addEventListener('click', () => storeOpsAndNums(button.textContent, currentScreen.textContent))
 );
-
+window.addEventListener('keydown', (e) => interpretKeypress(e),true);
 equalsButton.addEventListener('click', () => evaluate());
 backspaceButton.addEventListener('click', () => deleteFromDisplay());
-clearButton.addEventListener('click', () => resetDisplay());
+clearButton.addEventListener('click', () => clearDisplay());
 decimalButton.addEventListener('click', () => addDecimal());
 
 function storeOpsAndNums(op, num){
@@ -55,7 +56,9 @@ function evaluate(){
     else{
         storedNums2 = currentScreen.textContent;
     }
+    screenLast.textContent = `${storedNums1} ${storedOps} ${storedNums2} =`
     currentScreen.textContent = operate(storedOps, storedNums1, storedNums2);
+    
     resetFlag = true;
     equalsFlag = true;
     opsFlag = false;
@@ -64,7 +67,10 @@ function evaluate(){
 
 function resetDisplay(){
     currentScreen.textContent = ' ';
-    
+}
+function clearDisplay(){
+    currentScreen.textContent = ' ';
+    storedOps = null;
 }
 
 function deleteFromDisplay(){
@@ -80,6 +86,27 @@ function addDecimal(){
         return;
     }
     currentScreen.textContent += '.';
+}
+function interpretKeypress(e){
+    
+    if(e.key >= 0  && e.key <= 9) appendNumber(e.key);
+    if(e.key == 'Backspace') deleteFromDisplay();
+    if(e.key == '.') addDecimal();
+    if(e.key == 'Enter') evaluate();
+    if(e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/'){
+        storeOpsAndNums(convertMathOp(e.key),currentScreen.textContent);
+    }
+}
+function convertMathOp(key){
+    if (key == '/'){
+        return '÷';
+    }
+    else if (key == '*'){
+        return '×';
+    }
+    else{
+        return key;
+    }
 }
 
 function add(num1, num2){
