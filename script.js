@@ -33,7 +33,9 @@ function storeOpsAndNums(op, num){
         storedNums2 = num;
     }
     if(opsFlag == true){
-        evaluate(storedOps,storedNums1, currentScreen.textContent);
+        if(storedNums1 !== null && storedNums2 !==null && storedOps !=null){
+            evaluate(storedOps,storedNums1, currentScreen.textContent);
+        }
     }
     else{
         storedNums1 = num;
@@ -60,7 +62,9 @@ function evaluate(){
     else{
         storedNums2 = currentScreen.textContent;
     }
-    screenLast.textContent = `${storedNums1} ${storedOps} ${storedNums2} =`
+    if(storedNums1 !== null && storedNums2 !==null && storedOps !=null){
+        screenLast.textContent = `${storedNums1} ${storedOps} ${storedNums2} =`
+    }
     currentScreen.textContent = operate(storedOps, storedNums1, storedNums2);
     
     resetFlag = true;
