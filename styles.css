@@ -25,13 +25,16 @@ body{
     height: 65px;
     border-radius: 6px;
     border: 1px solid black;
+    width:298px;
 }
-.screenCurrent{
-    font-size: larger;
+#screenCurrent{
+    font-size: 18px;
     font-family: monospace;
+    margin-right:5px;
 }
-.screenLast{
+#screenLast{
     font-size: small;
+    margin-right:5px;
 }
 .calculator{
     margin-top: 50px;
@@ -44,14 +47,16 @@ body{
 button{
     font-family: monospace;
     background-color:#d5e3ee;
-    border-radius: 6px;;
+    border-radius: 6px;
+    margin:3px;
 }
 .clearblock{
     display:flex;
     justify-content: flex-start;
+    width:300px;
 }
 #clearbuttons{
-    width:150px;
+    width:149px;
     height:50px;
 }
 .clear{
@@ -59,4 +64,11 @@ button{
 }
 .backspace{
     background-color: #A7D2CB;
+}
+.activebutton{
+    background-color:#874C62;
+}
+button:hover{
+    transition:.5s;
+    filter: brightness(125%);
 }
