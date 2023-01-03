@@ -3,6 +3,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: monospace;
+    background-color: #A7D2CB;
 }
 .digitblock{
     display: inline-grid; 
@@ -19,19 +21,42 @@ body{
     text-align: right;
     word-wrap: break-word;
     word-break: break-all;
-    background-color: whitesmoke;
+    background-color: #deedf9;
     height: 65px;
     border-radius: 6px;
     border: 1px solid black;
 }
 .screenCurrent{
     font-size: larger;
+    font-family: monospace;
 }
 .screenLast{
     font-size: small;
 }
 .calculator{
-    background-color: green;
+    margin-top: 50px;
+    background-color: #F2D388;
     padding:20px;
-    border-radius: 48px;
+    border-radius: 12px;
+    border: 4px solid #B7C4CF;
+    box-shadow: 10px 10px 1px #89C4E1;
+}
+button{
+    font-family: monospace;
+    background-color:#d5e3ee;
+    border-radius: 6px;;
+}
+.clearblock{
+    display:flex;
+    justify-content: flex-start;
+}
+#clearbuttons{
+    width:150px;
+    height:50px;
+}
+.clear{
+    background-color: #C98474;
+}
+.backspace{
+    background-color: #A7D2CB;
 }

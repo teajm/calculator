@@ -16,9 +16,11 @@ const decimalButton = document.querySelector('.decimal');
 numberButtons.forEach((button) =>
   button.addEventListener('click', () => appendNumber(button.textContent))
 );
+
 operatorButtons.forEach((button) =>
   button.addEventListener('click', () => storeOpsAndNums(button.textContent, currentScreen.textContent))
 );
+
 window.addEventListener('keydown', (e) => interpretKeypress(e),true);
 equalsButton.addEventListener('click', () => evaluate());
 backspaceButton.addEventListener('click', () => deleteFromDisplay());
@@ -26,6 +28,7 @@ clearButton.addEventListener('click', () => clearDisplay());
 decimalButton.addEventListener('click', () => addDecimal());
 
 function storeOpsAndNums(op, num){
+    screenLast.textContent = `${num} ${op} `
     if(storedNums1 != null && storedNums2 == null){
         storedNums2 = num;
     }
@@ -35,6 +38,7 @@ function storeOpsAndNums(op, num){
     else{
         storedNums1 = num;
     }
+    
     storedOps = op;
     resetFlag = true;
     equalsFlag = false;
@@ -70,6 +74,7 @@ function resetDisplay(){
 }
 function clearDisplay(){
     currentScreen.textContent = ' ';
+    screenLast.textContent = '';
     storedOps = null;
 }
 
@@ -87,8 +92,8 @@ function addDecimal(){
     }
     currentScreen.textContent += '.';
 }
-function interpretKeypress(e){
-    
+
+function interpretKeypress(e){   
     if(e.key >= 0  && e.key <= 9) appendNumber(e.key);
     if(e.key == 'Backspace') deleteFromDisplay();
     if(e.key == '.') addDecimal();
@@ -97,6 +102,7 @@ function interpretKeypress(e){
         storeOpsAndNums(convertMathOp(e.key),currentScreen.textContent);
     }
 }
+
 function convertMathOp(key){
     if (key == '/'){
         return '÷';
@@ -121,6 +127,13 @@ function multiply(num1, num2){
 function divide(num1, num2){
     return Number(num1) / Number(num2);
 }
+function percent(a){
+    return divide(a,100);
+}
+function power(a,b){
+    return Math.pow(a,b);
+}
+  
 function operate(operator, num1, num2){
     switch(operator){
         case '+':
