@@ -7,8 +7,10 @@ let opsFlag = false;
 const numberButtons = document.querySelectorAll('[number]');
 const currentScreen = document.getElementById('screenCurrent');
 const operatorButtons = document.querySelectorAll('[operator]');
-const equalsButton = document.querySelectorAll('[equals]');
+const equalsButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear');
+const backspaceButton = document.querySelector('.backspace');
+const decimalButton = document.querySelector('.decimal');
 
 numberButtons.forEach((button) =>
   button.addEventListener('click', () => appendNumber(button.textContent))
@@ -16,11 +18,11 @@ numberButtons.forEach((button) =>
 operatorButtons.forEach((button) =>
   button.addEventListener('click', () => storeOpsAndNums(button.textContent, currentScreen.textContent))
 );
-equalsButton.forEach((button) =>
-  button.addEventListener('click', () => evaluate())
-);
 
+equalsButton.addEventListener('click', () => evaluate());
+backspaceButton.addEventListener('click', () => deleteFromDisplay());
 clearButton.addEventListener('click', () => resetDisplay());
+decimalButton.addEventListener('click', () => addDecimal());
 
 function storeOpsAndNums(op, num){
     if(storedNums1 != null && storedNums2 == null){
@@ -33,22 +35,19 @@ function storeOpsAndNums(op, num){
         storedNums1 = num;
     }
     storedOps = op;
-
- 
-
     resetFlag = true;
     equalsFlag = false;
     opsFlag = true;
 }
 
 function appendNumber(num){
-
     if(resetFlag === true){
         resetDisplay();
         resetFlag = false;
     }
     currentScreen.textContent += num;
 }
+
 function evaluate(){
     if(equalsFlag == true){
         storedNums1 = currentScreen.textContent;
@@ -65,6 +64,22 @@ function evaluate(){
 
 function resetDisplay(){
     currentScreen.textContent = ' ';
+    
+}
+
+function deleteFromDisplay(){
+    currentScreen.textContent = currentScreen.textContent.toString().slice(0,-1);
+}
+
+function addDecimal(){
+    if(resetFlag === true){
+        resetDisplay();
+        resetFlag = false;
+    }
+    if(currentScreen.textContent.includes('.')){
+        return;
+    }
+    currentScreen.textContent += '.';
 }
 
 function add(num1, num2){
