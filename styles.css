@@ -6,9 +6,11 @@ body{
     font-family: monospace;
     background-color: #A7D2CB;
 }
+h4{
+    margin-bottom:0;
+}
 .digitblock{
     display: inline-grid; 
-    /* grid-gap:1em; */
     grid-template-rows: repeat(4, 2fr);
     grid-template-columns: repeat(4, 2fr);
     height: 300px;
@@ -37,7 +39,7 @@ body{
     margin-right:5px;
 }
 .calculator{
-    margin-top: 50px;
+    margin-top: 30px;
     background-color: #F2D388;
     padding:20px;
     border-radius: 12px;
@@ -71,4 +73,19 @@ button{
 button:hover{
     transition:.5s;
     filter: brightness(125%);
+}
+#github-logo{
+    width:18px;
+    height:18px;
+}
+#github-logo:hover{
+    transition:.5s;
+    filter: brightness(125%);
+}
+#footer{
+    display:flex;
+    align-items: center;
+    position:absolute;
+    bottom:0;
+    gap:10px;
 }

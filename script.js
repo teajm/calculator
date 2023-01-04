@@ -65,7 +65,7 @@ function evaluate(){
     if(storedNums1 !== null && storedNums2 !==null && storedOps !=null){
         screenLast.textContent = `${storedNums1} ${storedOps} ${storedNums2} =`
     }
-    currentScreen.textContent = operate(storedOps, storedNums1, storedNums2);
+    currentScreen.textContent = roundNumber(operate(storedOps, storedNums1, storedNums2));
     
     resetFlag = true;
     equalsFlag = true;
@@ -119,7 +119,9 @@ function convertMathOp(key){
         return key;
     }
 }
-
+function roundNumber(num){
+    return Math.round(num * 1000) / 1000;
+}
 function add(num1, num2){
     return Number(num1) + Number(num2);
 }
