@@ -56,17 +56,18 @@ function appendNumber(num){
 }
 
 function evaluate(){
-    if(equalsFlag == true){
-        storedNums1 = currentScreen.textContent;
+    if(storedNums1 != null && storedNums2 != null){
+        if(equalsFlag == true){
+            storedNums1 = currentScreen.textContent;
+        }
+        else{
+            storedNums2 = currentScreen.textContent;
+        }
+        if(storedNums1 !== null && storedNums2 !==null && storedOps !=null){
+            screenLast.textContent = `${storedNums1} ${storedOps} ${storedNums2} =`
+        }
+        currentScreen.textContent = roundNumber(operate(storedOps, storedNums1, storedNums2));
     }
-    else{
-        storedNums2 = currentScreen.textContent;
-    }
-    if(storedNums1 !== null && storedNums2 !==null && storedOps !=null){
-        screenLast.textContent = `${storedNums1} ${storedOps} ${storedNums2} =`
-    }
-    currentScreen.textContent = roundNumber(operate(storedOps, storedNums1, storedNums2));
-    
     resetFlag = true;
     equalsFlag = true;
     opsFlag = false;
