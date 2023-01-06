@@ -17,6 +17,7 @@ h4{
     width: 300px;
 }
 .screen{
+    overflow: scroll;
     display:flex;
     flex-direction: column;
     justify-content:space-around;
