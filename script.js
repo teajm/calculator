@@ -79,7 +79,12 @@ function evaluate() {
 function resetDisplay() {
 	currentScreen.textContent = " ";
 }
-
+//write a function to calculate square roots
+function squareRoots() {
+	let num = currentScreen.textContent;
+	let result = Math.sqrt(num);
+	currentScreen.textContent = result;
+}
 function clearDisplay() {
 	currentScreen.textContent = " ";
 	screenLast.textContent = "";
