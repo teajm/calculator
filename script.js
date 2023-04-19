@@ -28,6 +28,16 @@ equalsButton.addEventListener("click", () => evaluate());
 backspaceButton.addEventListener("click", () => deleteFromDisplay());
 clearButton.addEventListener("click", () => clearDisplay());
 decimalButton.addEventListener("click", () => addDecimal());
+tangentButton.addEventListener("click", () => calculateTangent());
+cosineButton.addEventListener("click", () => calculateCosine());
+sineButton.addEventListener("click", () => caculateSine());
+arcTanButton.addEventListener("click", () => calculateArcTan());
+arcCosButton.addEventListener("click", () => calculateArcCos());
+arcSinButton.addEventListener("click", () => calculateArcSine());
+squareRootButton.addEventListener("click", () => squareRoots());
+powerButton.addEventListener("click", () => raiseToPower(2));
+cubeButton.addEventListener("click", () => raiseToPower(3));
+fourthPowerButton.addEventListener("click", () => raiseToPower(4));
 
 function storeOpsAndNums(op, num) {
 	screenLast.textContent = `${num} ${op} `;
