@@ -90,10 +90,49 @@ function clearDisplay() {
 	screenLast.textContent = "";
 	storedOps = null;
 }
-function caculateSine()PageTran
+function caculateSine(){
+	let num = currentScreen.textContent;
+	let result = Math.sin(num);
+	currentScreen.textContent = result;
+}
+function calculateCosine(){
+	let num = currentScreen.textContent;
+	let result = Math.cos(num);
+	currentScreen.textContent = result;
+}
+function calculateTangent(){
+	let num = currentScreen.textContent;
+	let result = Math.tan(num);
+	currentScreen.textContent = result;
+}
+function calculateArcSine(){
+	let num = currentScreen.textContent;
+	let result = Math.asin(num);
+	currentScreen.textContent = result;
+}
+function calculateArcCos(){
+	let num = currentScreen.textContent;
+	let result = Math.acos(num);
+	currentScreen.textContent ß= result;
+} 
+function calculateArcTan(){
+	let num = currentScreen.textContent;
+	let result = Math.atan(num);
+	currentScreen.textContent = result;
+}
 
 function deleteFromDisplay() {
 	currentScreen.textContent = currentScreen.textContent.toString().slice(0, -1);
+}
+function raiseToPower(power){
+	let num = currentScreen.textContent;
+	let result = Math.pow(num, power);
+	currentScreen.textContent = result;
+}
+function calculateNthRoot(n){
+	let num = currentScreen.textContent;
+	let result = Math.pow(num, 1/n);
+	currentScreen.textContent = result;
 }
 
 function addDecimal() {
