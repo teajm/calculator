@@ -90,6 +90,7 @@ function clearDisplay() {
 	screenLast.textContent = "";
 	storedOps = null;
 }
+function caculateSine()PageTran
 
 function deleteFromDisplay() {
 	currentScreen.textContent = currentScreen.textContent.toString().slice(0, -1);
